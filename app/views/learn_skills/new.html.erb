@@ -1,0 +1,11 @@
+<h1> Choose what to learn </h1>
+<br>
+
+
+
+
+
+<%= simple_form_for @learn_skill do |f|%>
+  <%= f.association :skill %>
+  <%= f.button :submit %>
+<%end%>

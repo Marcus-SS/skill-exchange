@@ -1,0 +1,11 @@
+<h1> Choose what to teach </h1>
+<br>
+
+
+
+<%= simple_form_for @teach_skill do |f|%>
+  <%= f.association :skill %>
+  <%= f.input :mode, collection: ["Online", "Offline", "Online/Offline"]%>
+  <%= f.input :level, collection: ["Beginner", "Intermediate", "Advanced"]%>
+  <%= f.button :submit %>
+<%end%>

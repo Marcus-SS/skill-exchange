@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   resources :learn_skills
   resources :teach_skills
   resources :matches
+  # resources :profiles
+  get "/profile/edit" => "profile#edit", as: :profile_edit
+  patch "/profile" => "profile#update", as: :profile_update
+  get "/profile" => "profile#show", as: :profile_show
+  get "/profile/:id/show" => "profile#other", as: :profile_other
+
 
 
   # Defines the root path route ("/")
