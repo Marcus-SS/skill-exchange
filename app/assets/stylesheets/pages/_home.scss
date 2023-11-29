@@ -1,1 +1,33 @@
 // Specific CSS for your home-page
+
+
+.banner-purple {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #7746EF; /* Replace with your desired color */
+  background-size: cover;
+  color: white; /* Sets the text color to white */
+  h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 45px;
+  }
+  p {
+    color: white;
+    opacity: .8;
+    font-size: 25px;
+    font-weight: lighter;
+    margin-bottom: 30px;
+  }
+}
+
+.logo {
+  width: 200px; /* Adjust as necessary */
+  height: auto;
+}
+
+.secondary-action {
+  color: white;
+}
