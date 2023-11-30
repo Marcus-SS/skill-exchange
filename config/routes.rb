@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   # Hide the /users/sign_in url, and instead redirect to /
-  get "/users/sign_in", to: redirect('/')
+  # get "/users/sign_in", to: redirect('/')
 
   devise_for :users
   devise_scope :user do
-    get "/" => "devise/sessions#new"
+    get '/', to: 'devise/sessions#new'
   end
-  # root to: "devise/sessions#new"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -18,14 +17,12 @@ Rails.application.routes.draw do
   resources :learn_skills
   resources :teach_skills
   resources :matches
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
   # resources :profiles
   get "/profile/edit" => "profile#edit", as: :profile_edit
   patch "/profile" => "profile#update", as: :profile_update
   get "/profile" => "profile#show", as: :profile_show
   get "/profile/:id/show" => "profile#other", as: :profile_other
-
-
-
-  # Defines the root path route ("/")
-  # root "posts#index"
 end

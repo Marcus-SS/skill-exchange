@@ -1,6 +1,8 @@
 # db/seeds.rb
 require 'faker'
 
+Message.destroy_all
+Chatroom.destroy_all
 Match.destroy_all
 TeachSkill.destroy_all
 LearnSkill.destroy_all
@@ -15,13 +17,43 @@ skills = []
 # Seed users
 users = []
 p 'Creating users...'
-50.times do
+users << User.create(
+  email: 'daniel@gmail.com',
+  password: 'password123',
+  name: "Daniel",
+  age: Faker::Number.between(from: 18, to: 60),
+  gender: Faker::Gender.binary_type,
+  city: Faker::Address.city,
+  bio: Faker::Lorem.paragraph,
+  availibility: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
+)
+users << User.create(
+  email: 'bruno@gmail.com',
+  password: 'password123',
+  name: "Bruno",
+  age: Faker::Number.between(from: 18, to: 60),
+  gender: "Male",
+  city: Faker::Address.city,
+  bio: Faker::Lorem.paragraph,
+  availibility: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
+)
+users << User.create(
+  email: 'marcus@gmail.com',
+  password: 'password123',
+  name: "Marcus",
+  age: Faker::Number.between(from: 18, to: 60),
+  gender: "Male",
+  city: Faker::Address.city,
+  bio: Faker::Lorem.paragraph,
+  availibility: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
+)
+47.times do
   users << User.create(
     email: Faker::Internet.unique.email,
     password: 'password123',
     name: Faker::Name.name,
     age: Faker::Number.between(from: 18, to: 60),
-    gender: Faker::Gender.binary_type,
+    gender: "Male",
     city: Faker::Address.city,
     bio: Faker::Lorem.paragraph,
     availibility: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
@@ -68,3 +100,7 @@ matches = []
     learn_skill_2: learn_skill_2
   )
 end
+
+p 'Creating chatroom...'
+
+Chatroom.create!(match: Match.find_by_status("Accepted"))
