@@ -5,3 +5,4 @@
 <%= @user.bio %>
 <%= @user.city %>
 <%= @user.availibility %>
+<%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill %>

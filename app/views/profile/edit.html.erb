@@ -1,6 +1,7 @@
 <div class="profile-basic-info">
 <%= simple_form_for @user, url: profile_update_path do |f| %>
   <%= f.input :name %>
+  <%= f.input :photo, as: :file %>
   <%= f.input :age %>
   <%= f.input :city %>
   <%= f.input :gender %>
