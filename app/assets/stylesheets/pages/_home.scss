@@ -1,1 +1,41 @@
 // Specific CSS for your home-page
+
+
+.banner-purple {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #7746EF; /* Replace with your desired color */
+  background-size: cover;
+  color: white; /* Sets the text color to white */
+  h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 45px;
+  }
+  p {
+    color: white;
+    opacity: .8;
+    font-size: 25px;
+    font-weight: lighter;
+    margin-bottom: 30px;
+  }
+}
+
+.logo {
+  width: 200px; /* Adjust as necessary */
+  height: auto;
+}
+
+.secondary-action {
+  display: block; /* This makes each .link-item a block-level element */
+  padding-top: 10px;    /* Adjust the top padding as needed */
+  padding-right: 10px;  /* Adjust the right padding as needed */
+  padding-bottom: 10px; /* Adjust the bottom padding as needed */
+  padding-left: 0;      /* No padding on the left */
+  color: white;
+  hover {
+    background-color: #f0f0f0; /* Example hover effect */
+  }
+}

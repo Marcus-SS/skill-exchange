@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  # Hide the /users/sign_in url, and instead redirect to /
+  get "/users/sign_in", to: redirect('/')
+
   devise_for :users
-  root to: "pages#home"
+  devise_scope :user do
+    get "/" => "devise/sessions#new"
+  end
+  # root to: "devise/sessions#new"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

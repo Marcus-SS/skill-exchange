@@ -1,0 +1,17 @@
+.button-primary {
+  background-color: black; /* Button background */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Button size */
+  text-decoration: none; /* Remove underline from links */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+  margin: 1em 0;
+  display: inline-block;
+
+  &:hover {
+    background-color: white; /* Hover background */
+    color: black; /* Hover text color */
+    cursor: pointer; /* Change cursor to indicate it's clickable */
+  }
+}

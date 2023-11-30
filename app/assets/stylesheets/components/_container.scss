@@ -1,0 +1,18 @@
+.form-container {
+  margin: 30px; /* Adjust as needed */
+  padding: 20px; /* Adjust as needed */
+  border: 1px solid #ccc; /* Optional: adds a border around the form */
+  border-radius: 5px; /* Optional: rounds the corners of the border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Horizontal offset, vertical offset, blur radius, color */
+  background-color: #7746EF;
+  color: white;
+  h1 {
+    color: white;
+    font-weight: bold;
+  }
+  p {
+    color: white;
+    opacity: .8;
+    font-weight: lighter;
+ }
+}
