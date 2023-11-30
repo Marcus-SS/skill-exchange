@@ -1,0 +1,17 @@
+
+<% current_user.learn_skills.each do |ls| %>
+<% list = []%>
+<% @matches.each do |m| %>
+        <% if m.teach_skill_2.skill == ls.skill %>
+            <% list.append(m.teach_skill_2.user.name) %>
+            <% list.append(m.learn_skill_2.skill.name) %>
+            <% list.append("photo") %>
+
+
+        <% end %>
+      <% end %>
+  <h2> <%= list.empty? ? "" : ls.skill.name %> </h2>
+  <% list.each do |l|%>
+    <div> <%= l%> </div>
+  <%end%>
+<% end %>
