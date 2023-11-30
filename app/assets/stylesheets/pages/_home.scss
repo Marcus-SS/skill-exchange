@@ -29,5 +29,13 @@
 }
 
 .secondary-action {
+  display: block; /* This makes each .link-item a block-level element */
+  padding-top: 10px;    /* Adjust the top padding as needed */
+  padding-right: 10px;  /* Adjust the right padding as needed */
+  padding-bottom: 10px; /* Adjust the bottom padding as needed */
+  padding-left: 0;      /* No padding on the left */
   color: white;
+  hover {
+    background-color: #f0f0f0; /* Example hover effect */
+  }
 }
