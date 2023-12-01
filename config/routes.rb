@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Hide the /users/sign_in url, and instead redirect to /
-  # get "/users/sign_in", to: redirect('/')
+  get "/users/sign_in", to: redirect('/')
 
   devise_for :users
   devise_scope :user do
