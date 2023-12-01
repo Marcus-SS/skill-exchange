@@ -48,7 +48,7 @@ users << User.create(
   availibility: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
 )
 47.times do
-  users << User.create(
+  user = User.new(
     email: Faker::Internet.unique.email,
     password: 'password123',
     name: Faker::Name.name,
@@ -58,6 +58,12 @@ users << User.create(
     bio: Faker::Lorem.paragraph,
     availibility: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
   )
+  ary = ["https://xsgames.co/randomusers/avatar.php?g=male", "https://xsgames.co/randomusers/avatar.php?g=female"]
+  file = URI.open(ary.sample)
+  filename = "user#{SecureRandom.urlsafe_base64(5)}.jpg"
+  user.photo.attach(io: file, filename: filename, content_type: "image/jpg")
+  user.save!
+  users << user
 end
 
 p 'Creating teach_skills...'
