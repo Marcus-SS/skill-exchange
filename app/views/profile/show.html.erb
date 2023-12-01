@@ -1,10 +1,16 @@
-<p> <%= @user.name %> </p>
-<%= @user.email %>
-<%= @user.age %>
-<%= @user.gender %>
-<%= @user.bio %>
-<%= @user.city %>
-<%= @user.availibility %>
-<% if current_user.photo.attached? %>
-  <%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+
+<div class="profile-container">
+  <div class="profile-left">
+    <%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill %>
+    <p><%= @user.name %></p>
+  </div>
+
+  <div class="profile-right">
+    <p><%= @user.email %></p>
+    <p><%= @user.age %></p>
+    <p><%= @user.gender %></p>
+    <p><%= @user.bio %></p>
+    <p><%= @user.city %></p>
+    <p><%= @user.availibility %></p>
+  </div>
+</div>
