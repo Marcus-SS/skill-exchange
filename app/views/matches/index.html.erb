@@ -1,12 +1,16 @@
 <% current_user.learn_skills.each do |ls| %>
-  <h2> <%= @matches.any? { |m| m.teach_skill_2.skill == ls.skill } ? ls.skill.name : "" %> </h2>
-<% @matches.each do |m| %>
-    <% if m.teach_skill_2.skill == ls.skill %>
-        <p><%= m.teach_skill_2.user.name %></p>
-        <p> <%= m.learn_skill_2.skill.name %> </p>
-        <%= cl_image_tag m.teach_skill_2.user.photo.key, height: 300, width: 400, crop: :fill  %>
-
-
+  <% if @matches.any? { |m| m.teach_skill_2.skill == ls.skill } %>
+    <h2><%= ls.skill.name %></h2>
+    <% @matches.each do |m| %>
+      <% if m.teach_skill_2.skill == ls.skill %>
+        <div class="match-details">
+          <%= link_to profile_other_path(m.teach_skill_2.user.id) do %>
+            <p><%= m.teach_skill_2.user.name %></p>
+            <p><%= m.learn_skill_2.skill.name %></p>
+            <%= cl_image_tag m.teach_skill_2.user.photo.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
