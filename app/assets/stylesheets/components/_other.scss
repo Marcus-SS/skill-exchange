@@ -1,0 +1,17 @@
+/* app/assets/stylesheets/application.css */
+
+/* ...existing styles... */
+
+.profile-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.profile-left {
+  text-align: center;
+}
+
+.profile-right {
+  width: 60%; /* Adjust the width as needed */
+}
