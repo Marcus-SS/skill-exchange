@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%= yield(:navbar_class) %>">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to matches_path, class: "navbar-brand" do %>
       <%= image_tag "SkillExchange.png", alt: 'logo', class: 'navbar-logo' %>
       <h2 class="navbar-title">Skill Exchange</h2>
     <% end %>
