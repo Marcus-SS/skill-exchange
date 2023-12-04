@@ -6,4 +6,12 @@ class Match < ApplicationRecord
 
   has_one :chatroom
   validates :teach_skill_1, uniqueness: { scope: :teach_skill_2 }
+
+  def users
+    [learn_skill_1.user, learn_skill_2.user]
+  end
+
+  def other_user(user)
+    users.find { |el| el != user }
+  end
 end
