@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :learn_skills
   has_many :teach_skills
+  has_many :messages
   has_one_attached :photo
 
   after_create :attach_default_photo

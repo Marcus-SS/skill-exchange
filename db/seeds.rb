@@ -92,21 +92,21 @@ end
 p 'Creating matches...'
 # Seed matches
 matches = []
-25.times do
-  teach_skill_1 = teach_skills.sample
-  teach_skill_2 = teach_skills.sample
-  learn_skill_1 = learn_skills.sample
-  learn_skill_2 = learn_skills.sample
+# 25.times do
+#   teach_skill_1 = teach_skills.sample
+#   teach_skill_2 = teach_skills.sample
+#   learn_skill_1 = learn_skills.sample
+#   learn_skill_2 = learn_skills.sample
 
-  matches << Match.create!(
-    status: ['Pending', 'Accepted', 'Rejected'].sample,
-    teach_skill_1: teach_skill_1,
-    teach_skill_2: teach_skill_2,
-    learn_skill_1: learn_skill_1,
-    learn_skill_2: learn_skill_2
-  )
-end
+#   matches << Match.create!(
+#     status: ['Pending', 'Accepted', 'Rejected'].sample,
+#     teach_skill_1: teach_skill_1,
+#     teach_skill_2: teach_skill_2,
+#     learn_skill_1: learn_skill_1,
+#     learn_skill_2: learn_skill_2
+#   )
+# end
 
 p 'Creating chatroom...'
 
-Chatroom.create!(match: Match.find_by_status("Accepted"))
+# Chatroom.create!(match: Match.find_by_status("Accepted"))
