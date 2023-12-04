@@ -29,7 +29,6 @@ class MatchesController < ApplicationController
 
   def find_matches(user)
     matches = []
-
     User.where.not(id: user.id).each do |other_user|
       if has_matching_skills?(other_user.teach_skills, user.learn_skills) &&
          has_matching_skills?(other_user.learn_skills, user.teach_skills)
@@ -73,10 +72,19 @@ class MatchesController < ApplicationController
 
     if m.save
       puts "Match created"
+      # if Chatroom.find(other_user.id) == false
+        Chatroom.create(match_id: m.id)
+
+      # end
       return m
     else
       puts "Failed to create match"
-      return nil
+      return Match.find_by(
+        teach_skill_1_id: user_teach_skill&.id,
+        learn_skill_1_id: user_learn_skill&.id,
+        teach_skill_2_id: other_user_teach_skill&.id,
+        learn_skill_2_id: other_user_learn_skill&.id
+      )
     end
   end
 
