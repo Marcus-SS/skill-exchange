@@ -2,7 +2,7 @@
   <div class="col-3">
     <% @chatrooms.each do |chatroom| %>
       <div class="chatroom">
-        <h2><%= chatroom.match.learn_skill_2.user.name %></h2>
+        <h2><%= chatroom.match.other_user(current_user).name %></h2>
         <p>Last message: <%= chatroom.last_message_time.strftime("%d %b %Y %H:%M") %></p>
         <p><%= link_to 'View Chatroom', chatroom_path(chatroom) %></p>
       </div>
@@ -13,7 +13,7 @@
       data-controller="chatroom-subscription"
       data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
       >
-      <h1>#<%= @chatroom.match.learn_skill_2.user.name %></h1>
+      <h1>#<%= @chatroom.match.other_user(current_user).name %></h1>
 
       <div class="messages" data-chatroom-subscription-target="messages">
         <% @chatroom.messages.each do |message| %>
