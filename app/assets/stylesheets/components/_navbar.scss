@@ -26,8 +26,33 @@
   width: 100%;
   background: transparent;
   box-shadow: none;
+
   .navbar-wagon-link {
     color: white;
     font-weight: bold;
   }
+}
+
+.navbar-title {
+  display: inline;
+  color: white;
+  position: relative;
+  top: 8px;
+}
+
+
+.special-button {
+  background-color: white;
+  padding: 10px;
+  color:#5838d1;
+  border-radius: 10px;
+}
+
+.nav-item a {
+  text-decoration: none !important;
+}
+
+.nav-item :hover {
+  text-decoration: underline !important;
+  text-decoration-color: white !important;
 }
