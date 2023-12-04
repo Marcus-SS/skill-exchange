@@ -1,7 +1,7 @@
 class MatchesController < ApplicationController
   def index
     @matches = find_matches(current_user)
-
+    # raise
   end
 
   def show

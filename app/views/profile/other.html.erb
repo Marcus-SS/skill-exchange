@@ -1,7 +1,25 @@
 <div class="profile-container">
-  <div class="profile-left">
-    <%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill %>
-    <p><%= @user.name %></p>
+  <div>
+    <div class="profile-left">
+      <%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill %>
+      <p><%= @user.name %></p>
+
+    <div>
+    <% if @matched_teach_skills.count > 0  %>
+      <p> is a match...</p>
+      <h3>You can teach:</h3>
+        <% @matched_teach_skills.each do |m| %>
+          <%= m.skill.name %>
+        <% end %>
+      <h3>You can learn:</h3>
+        <% @matched_learn_skills.each do |m| %>
+          <%= m.skill.name %>
+        <% end %>
+    <% end  %>
+
+
+    </div>
+    </div>
   </div>
 
   <div class="profile-right">

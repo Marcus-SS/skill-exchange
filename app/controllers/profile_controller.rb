@@ -29,6 +29,8 @@ class ProfileController < ApplicationController
     @user = User.find_by(id: params[:id])
     @teach_skills = TeachSkill.where(user_id: @user.id)
     @learn_skills = LearnSkill.where(user_id: @user.id)
+    @matched_teach_skills = @teach_skills.where(skill_id: current_user.learn_skills.pluck(:skill_id))
+    @matched_learn_skills = @learn_skills.where(skill_id: current_user.teach_skills.pluck(:skill_id))
   end
 
   private
