@@ -1,16 +1,25 @@
-
-<div class="profile-container">
+<div class="profile-container mt-5 container">
   <div class="profile-left">
-    <%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill %>
-    <p><%= @user.name %></p>
+    <% if current_user.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, height: 250, width: 250, crop: :fill, class: "rounded-image" %>
+    <% else %>
+      <%= image_tag "sample-avatar.jpg", height: 250, width: 250, class: "rounded-image" %>
+    <% end %>
+
+    <p class="greeting">Hello, <%= @user.name %></p>
+      <%= link_to "Edit Profile", profile_edit_path(@current_user), class: "button-primary" %>
+      <%= link_to "Add Skill", profile_edit_path, class: "button-primary" %>
   </div>
 
   <div class="profile-right">
-    <p><%= @user.email %></p>
-    <p><%= @user.age %></p>
-    <p><%= @user.gender %></p>
-    <p><%= @user.bio %></p>
-    <p><%= @user.city %></p>
-    <p><%= @user.availibility %></p>
+    <div class="info-box">
+      <p><%= @user.email %></p>
+      <p><%= @user.age %></p>
+      <p><%= @user.gender %></p>
+      <p><%= @user.bio %></p>
+      <p><%= @user.city %></p>
+      <p><%= @user.availibility %></p>
+    </div>
+
   </div>
 </div>
