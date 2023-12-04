@@ -1,1 +1,12 @@
-<h1>Chatroom Index</h1>
+<div class="container mt-5">
+
+  <h1>Messages</h1>
+
+  <% @chatrooms.each do |chatroom| %>
+  <div class="chatroom">
+    <h2><%= chatroom.name %></h2>
+    <p><%= link_to '', chatroom_path(chatroom) %></p>
+  </div>
+  <% end %>
+
+</div>

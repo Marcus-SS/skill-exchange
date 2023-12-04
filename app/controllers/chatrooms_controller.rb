@@ -1,6 +1,6 @@
 class ChatroomsController < ApplicationController
   def index
-    @chatrooms = Chatroom.all
+    @chatrooms = Chatroom.joins(:messages).where('messages.user': current_user).uniq
   end
 
   def show
