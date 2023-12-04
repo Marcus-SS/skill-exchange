@@ -2,7 +2,7 @@
 
   <div>
     <div class="profile-left">
-      <%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
       <p><%= @user.name %></p>
 
     <div>
@@ -17,6 +17,9 @@
           <%= m.skill.name %>
         <% end %>
     <% end  %>
+    <br>
+    <br>
+    <%= link_to "Click to Message", chatroom_path(@matches.last.chatroom) %>
 
 
     </div>

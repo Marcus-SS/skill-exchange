@@ -168,7 +168,7 @@ bruno.learn_skills << LearnSkill.create(user: bruno, skill: Skill.find_by(name: 
 bruno.teach_skills << TeachSkill.create(user: bruno, skill: Skill.find_by(name: "Coding in Python"))
 
 
-leo.learn_skills << LearnSkill.create(user: leo, skill: Skill.find_by(name: "Public Speaking"))
+leo.learn_skills << LearnSkill.create(user: leo, skill: Skill.find_by(name: "Problem Solving"))
 leo.teach_skills << TeachSkill.create(user: leo, skill: Skill.find_by(name: "Coding in Python"))
 
 
