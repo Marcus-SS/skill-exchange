@@ -28,3 +28,68 @@
     }
   }
 }
+
+.chatroom-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #CBC3E3;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .chatroom-card h6 {
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: 700;
+  }
+
+  .chatroom-card p {
+    color: #666;
+    font-size: 14px;
+  }
+}
+
+.chatroom-card a {
+  text-decoration: none;
+  color: black;
+}
+
+
+.chatroom-details {
+  display: flex;
+  gap: 5px;
+}
+
+
+.chatroom-details h6 {
+  font-size: 20px;
+  font-weight: 700;
+  position: relative;
+  left: 10px;
+  top: 5px;
+}
+
+.last-message {
+  opacity: 50%;
+  font-size: 12px;
+}
+
+// .button-send {
+//     width: 10%;
+//     background-color: black; /* Button background */
+//     color: white; /* Text color */
+//     text-decoration: none; /* Remove underline from links */
+//     border: none; /* Remove border */
+//     border-radius: 5px; /* Rounded corners */
+//     transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+//     margin: 2px;
+//     display: inline-block;
+//     position: relative;
+//     bottom: 5px;
+
+//     &:hover {
+//       background-color: white; /* Hover background */
+//       color: black; /* Hover text color */
+//       cursor: pointer; /* Change cursor to indicate it's clickable */
+//     }
+// }
