@@ -1,23 +1,35 @@
-<div class="form-container">
+<div class="form-container form-container-profile">
   <div class="profile-basic-info">
   <%= simple_form_for @user, url: profile_update_path do |f| %>
-    <%= f.input :name %>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :age %>
-    <%= f.input :city %>
-    <%= f.input :gender %>
-    <%= f.input :bio %>
-    <%= f.input :availibility %>
-    <%= f.button :submit %>
-  <% end %>
+  <div class="flex-one">
+  <div class="float-profile-left">
+    <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+    <%= f.input :photo, as: :file, label: " " %>
   </div>
-  <div class="skills">
+  <div class="float-profile-right">
+    <%= f.input :name %>
+    <%= f.input :gender %>
+    <%= f.input :age %>
+  </div>
+  </div>
+  <div class="flex-two">
+    <div>
+    <%= f.input :city %>
+    </div>
+    <div>
+    <%= f.input :availibility %>
+    </div>
+  </div>
+  <div class="bio">
+    <%= f.input :bio %>
+  </div>
+  <div class="skills-update">
   <div class="teach">
-  <h2>what do you want to teach</h2>
+  <h3>What do you want to teach?</h3>
   <% 5.times do |i| %>
     <div class="skill">
       <% if @teach_skills[i] %>
-      <%= @teach_skills[i].skill.name %>
+      <h5><%= @teach_skills[i].skill.name %></h5>
       <%= link_to "Edit", edit_teach_skill_path(@teach_skills[i]) %>
       <%= link_to "Delete", teach_skill_path(@teach_skills[i]), data: { turbo_method: "delete", turbo_confirm: "Are you sure you want to delete?" } %>
       <% else %>
@@ -25,7 +37,7 @@
       <%= link_to "Add Skill", new_teach_skill_path %>
       <% end %>
 
-  </div>
+    </div>
   <% end %>
 
 
@@ -34,11 +46,11 @@
   <br>
   <div class="learn">
 
-  <h2>What do you want to learn</h2>
+  <h3>What do you want to learn?</h3>
   <% 5.times do |i| %>
     <div class="skill">
       <% if @learn_skills[i] %>
-      <%= @learn_skills[i].skill.name %>
+      <h5><%= @learn_skills[i].skill.name %></h5>
       <%= link_to "Edit", edit_learn_skill_path(@learn_skills[i]) %>
       <%= link_to "Delete", learn_skill_path(@learn_skills[i]), data: { turbo_method: "delete", turbo_confirm: "Are you sure you want to delete?" } %>
       <% else %>
@@ -50,3 +62,8 @@
 </div>
 </div>
 </div>
+<br>
+<br>
+    <%= f.button :submit, class: "button-primary" %>
+  <% end %>
+  </div>
