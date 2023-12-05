@@ -6,7 +6,7 @@
   </div>
   <div class="col-9">
     <div class="chat-container mt-0">
-      <h1><%= @chatroom.match.other_user(current_user).name %></h1>
+      <h1><%= @chatroom.match.other_user(current_user).name.capitalize %></h1>
 
       <div class="messages" data-chatroom-subscription-target="messages">
         <% @chatroom.messages.each do |message| %>
