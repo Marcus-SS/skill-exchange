@@ -12,10 +12,10 @@
   }
 }
 
-.my-hint {
-  color: white;
-  opacity: .8;
-  font-weight: lighter;
+.my-hint, .form-text {
+  color: white !important;
+  opacity: .8 !important;
+  font-weight: lighter !important;
  }
 
 // .password .form-text {
