@@ -3,6 +3,11 @@
     <%= render "chatrooms", chatrooms: @chatrooms %>
   </div>
   <div class="col-9 bg-white">
-
+    <% if @chatrooms.empty? %>
+      <div class="unhappy-message">
+        <p>😞 Sorry, You don't have any Matches</p>
+        <%= link_to "Click here to match", matches_path(@current_user), class: "button-secondary" %>
+      </div>
+    <% end %>
   </div>
 </div>
