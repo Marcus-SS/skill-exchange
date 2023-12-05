@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="_profilepage.scss"> <!-- Link to your CSS file -->
+  <title>User Profile</title>
+</head>
+<body>
+
+<!-- Your HTML file -->
 <div class="profile-container mt-5 container">
   <div class="profile-left">
     <% if current_user.photo.attached? %>
@@ -7,19 +18,43 @@
     <% end %>
 
     <p class="greeting">Hello, <%= @user.name %></p>
-      <%= link_to "Edit Profile", profile_edit_path(@current_user), class: "button-primary" %>
-      <%= link_to "Add Skill", profile_edit_path, class: "button-primary" %>
+    <%= link_to "Edit Profile", profile_edit_path(@current_user), class: "button-primary" %>
+    <%= link_to "Add Skill", profile_edit_path, class: "button-primary" %>
   </div>
 
   <div class="profile-right">
     <div class="info-box">
-      <p><%= @user.email %></p>
-      <p><%= @user.age %></p>
-      <p><%= @user.gender %></p>
-      <p><%= @user.bio %></p>
-      <p><%= @user.city %></p>
-      <p><%= @user.availibility %></p>
-    </div>
+      <div class="info-item">
+        <p><strong>Bio:</strong><br><%= @user.bio %></p>
+        <p><%= @user.gender %>, <%= @user.age %></p>
+      </div>
 
+      <div class="info-item">
+        <p><strong>City:</strong><br><%= @user.city %></p>
+      </div>
+
+      <div class="info-item">
+        <p><strong>Availability:</strong><br><%= @user.availibility %></p>
+      </div>
+
+       <div class="info-item">
+        <p><strong>Can teach:</strong></p>
+        <ul class="teach-skills">
+          <% @user.teach_skills.each do |skill| %>
+            <li>
+              <div class="skill-box">
+                <p class="skill-name"><strong> <%= skill.skill.name %> </strong></p>
+                <p class="skill-mode">Mode: <%= skill.mode %></p>
+                <p class="skill-level">Level: <%= skill.level %></p>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
   </div>
 </div>
+
+</body>
+</html>
