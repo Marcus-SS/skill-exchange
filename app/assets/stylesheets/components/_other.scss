@@ -1,17 +1,91 @@
-/* app/assets/stylesheets/application.css */
-
-/* ...existing styles... */
+/* styles.css */
 
 .profile-container {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
 }
 
 .profile-left {
   text-align: center;
 }
 
+.rounded-image {
+  border-radius: 50%;
+}
+
+.greeting {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.button-primary {
+  background-color: #7746EF; /* Change this color to your desired button color */
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.button-primary:hover {
+  background-color: #000000; /* Change this color for the hover effect */
+  color: #fff;
+
+}
+
 .profile-right {
-  width: 60%; /* Adjust the width as needed */
+  width: 70%; /* Adjust the width as needed */
+}
+
+.info-box {
+  padding: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item {
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  outline: 1px solid #000000; /* Add an outline */
+
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px
+}
+
+.teach-skills {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; /* Allow skills to wrap onto the next line if necessary */
+}
+
+.teach-skills li {
+  margin-right: 20px; /* Add some space between skills */
+}
+
+.skill-box {
+  outline: 2px solid #000000; /* Add an outline */
+  padding: 15px; /* Add padding for better visibility */
+  border-radius: 8px; /* Add border-radius for rounded corners */
+  margin-bottom: 15px; /* Adjust space between skills */
+  height: 130px; /* Set a fixed height for all skill boxes */
+  width: 200px; /* Set a fixed height for all skill boxes */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.skill-name,
+.skill-mode,
+.skill-level {
+  margin: 0; /* Reset margin for consistency */
+  text-align: center;
+}
+
+.skill-mode,
+.skill-level {
+  margin-top: 5px;
 }
