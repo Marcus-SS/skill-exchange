@@ -1,13 +1,11 @@
-<div class="row gx-0">
-  <div class="col-3">
+<div class="row gx-0" data-controller="chatroom-subscription"
+      data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+      data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
+  <div class="col-3" data-chatroom-subscription-target="chatrooms">
     <%= render "chatrooms", chatrooms: @chatrooms %>
   </div>
   <div class="col-9">
-    <div class="chat-container mt-0"
-      data-controller="chatroom-subscription"
-      data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
-      data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
-
+    <div class="chat-container mt-0">
       <h1><%= @chatroom.match.other_user(current_user).name %></h1>
 
       <div class="messages" data-chatroom-subscription-target="messages">
