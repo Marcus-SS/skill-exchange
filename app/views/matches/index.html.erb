@@ -1,21 +1,30 @@
 
-<% if @matches.count > 0  %>
-  <% current_user.learn_skills.each do |ls| %>
-    <% if @matches.any? { |m| m.teach_skill_2.skill == ls.skill } %>
-      <h2><%= ls.skill.name %></h2>
-      <% @matches.each do |m| %>
-        <% if m.teach_skill_2.skill == ls.skill %>
-          <div class="match-details">
-            <%= link_to profile_other_path(m.teach_skill_2.user.id) do %>
-              <p><%= m.teach_skill_2.user.name %></p>
-              <p><%= m.learn_skill_2.skill.name %></p>
-              <%= cl_image_tag m.teach_skill_2.user.photo.key, height: 300, width: 400, crop: :fill %>
-            <% end %>
+<div class="main-container-matches">
+  <h1 id="matches-title">Your Matches</h1>
+  <% if @matches.count > 0  %>
+    <% current_user.learn_skills.each do |ls| %>
+      <% if @matches.any? { |m| m.teach_skill_2.skill == ls.skill } %>
+        <div class="metacontainermatches">
+        <h2 class="skill-title"><%= ls.skill.name %></h2>
+          <div class="flex-container">
+            <% @matches.each do |m| %>
+              <% if m.teach_skill_2.skill == ls.skill %>
+                <%= link_to profile_other_path(m.teach_skill_2.user.id), class: "match-new-details" do %>
+                  <div class="match-details" style="background-image: url(<%= m.teach_skill_2.user.photo.url %>)">
+                    <p class="name-match"><%= m.teach_skill_2.user.name.capitalize %></p>
+                    <p>You can teach: <%= m.learn_skill_2.skill.name %></p>
+                   </div>
+                <% end %>
+              <% end %>
+          <% end %>
           </div>
-        <% end %>
       <% end %>
+      </div>
     <% end %>
+  <% else %>
+      <div class="no-matches">
+        <p>You see no matches because you have not added any skills you can teach and skills that you want to learn.</p>
+        <%= link_to "Click here to add skills", profile_edit_path, class: "button-no-matches" %>
+      </div>
   <% end %>
-<% else %>
-    <p>no matches to display</p>
-<% end %>
+</div>
