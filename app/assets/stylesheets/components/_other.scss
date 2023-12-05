@@ -11,9 +11,6 @@
   text-align: center;
 }
 
-.rounded-image {
-  border-radius: 50%;
-}
 
 .greeting {
   font-size: 1.5em;
@@ -138,4 +135,5 @@
 .navbar {
   position: sticky;
   top: 0;
+  z-index: 1;
 }
