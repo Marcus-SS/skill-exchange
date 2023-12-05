@@ -4,7 +4,7 @@ class Match < ApplicationRecord
   belongs_to :teach_skill_1, class_name: 'TeachSkill', foreign_key: "teach_skill_1_id"
   belongs_to :teach_skill_2, class_name: 'TeachSkill', foreign_key: "teach_skill_2_id"
 
-  has_one :chatroom
+  has_one :chatroom, dependent: :destroy
   validates :teach_skill_1, uniqueness: { scope: :teach_skill_2 }
 
   def users

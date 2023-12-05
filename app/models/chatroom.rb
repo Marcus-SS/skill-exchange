@@ -1,6 +1,6 @@
 class Chatroom < ApplicationRecord
   belongs_to :match
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
   validates :match_id, presence: true, uniqueness: true
 
