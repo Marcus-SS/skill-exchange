@@ -56,3 +56,9 @@
   text-decoration: underline !important;
   text-decoration-color: white !important;
 }
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
