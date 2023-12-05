@@ -19,12 +19,13 @@
 
 
 .flex-one img {
-  border-radius: 50%;
-  height: 173px;
-  width: 173px;
+  border-radius: 60%;
+  height: 180px;
+  width: 180px;
   position: relative;
   left: 90px;
   border: 2px white solid;
+  object-fit: cover;
 }
 
 

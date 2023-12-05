@@ -12,7 +12,8 @@
 <div class="profile-container mt-5 container">
   <div class="profile-left">
     <% if current_user.photo.attached? %>
-      <%= cl_image_tag current_user.photo.key, height: 250, width: 250, crop: :fill, class: "rounded-image" %>
+        <%= console %>
+      <%= cl_image_tag current_user.photo.key, height: 250, width: 250, class: "rounded-image" %>
     <% else %>
       <%= image_tag "sample-avatar.jpg", height: 250, width: 250, class: "rounded-image" %>
     <% end %>
