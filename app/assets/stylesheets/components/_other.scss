@@ -1,5 +1,7 @@
 /* styles.css */
 
+
+
 .profile-container {
   display: flex;
   justify-content: space-between;
@@ -18,13 +20,14 @@
   font-weight: bold;
 }
 
-.button-primary {
+.pfp {
   background-color: #7746EF; /* Change this color to your desired button color */
   color: #fff;
   padding: 8px 16px;
   text-decoration: none;
   display: inline-block;
   margin-top: 10px;
+
 }
 
 .button-primary:hover {
@@ -56,7 +59,7 @@
 
 .teach-skills {
   list-style-type: none;
-  padding: 0;
+  padding: 10;
   display: flex;
   flex-wrap: wrap; /* Allow skills to wrap onto the next line if necessary */
 }
@@ -66,21 +69,19 @@
 }
 
 .skill-box {
-  outline: 2px solid #000000; /* Add an outline */
   padding: 15px; /* Add padding for better visibility */
   border-radius: 8px; /* Add border-radius for rounded corners */
   margin-bottom: 15px; /* Adjust space between skills */
   height: 130px; /* Set a fixed height for all skill boxes */
-  width: 200px; /* Set a fixed height for all skill boxes */
-
+  width: 215px; /* Set a fixed height for all skill boxes */
+  outline: 2px solid #7746EF; /* Add an outline */
+  background-color: #d3c1ff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.skill-name,
-.skill-mode,
-.skill-level {
+.skill-name{
   margin: 0; /* Reset margin for consistency */
   text-align: center;
 }
@@ -88,4 +89,53 @@
 .skill-mode,
 .skill-level {
   margin-top: 5px;
+}
+
+.match {
+  outline: 2px solid #7746EF; /* Add an outline */
+  background-color: #d3c1ff;
+  padding: 15px; /* Add padding for better visibility */
+  padding-bottom: 0px; /* Add padding for better visibility */
+  border-radius: 8px; /* Add border-radius for rounded corners */
+  margin-bottom: 20px; /* Add space between elements */
+}
+
+.match h3 {
+  margin-top: 15px; /* Add space between headings and content */
+}
+
+.match a.button-primary {
+  margin-top: 15px; /* Add space between link and other elements */
+}
+
+
+.learn-skills {
+  list-style-type: none;
+  padding-left: 10px;
+  display: flex;
+  flex-wrap: wrap; /* Allow skills to wrap onto the next line if necessary */
+}
+
+
+.learn-skills li {
+  margin-right: 20px; /* Add some space between skills */
+}
+
+.skill-box2 {
+  outline: 2px solid #7746EF; /* Add an outline */
+  background-color: #d3c1ff;
+  padding: 15px; /* Add padding for better visibility */
+  border-radius: 8px; /* Add border-radius for rounded corners */
+  margin-bottom: 15px; /* Adjust space between skills */
+  height: 55px; /* Set a fixed height for all skill boxes */
+  width: 215px; /* Set a fixed height for all skill boxes */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
 }

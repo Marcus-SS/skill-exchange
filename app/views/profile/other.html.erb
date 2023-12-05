@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="_other.scss"> <!-- Link to your CSS file -->
-  <link rel="stylesheet" href="_index.scss"> <!-- Link to your CSS file -->
-
   <title>User Profile</title>
 </head>
 <body>
@@ -14,14 +12,32 @@
 <div class="profile-container mt-5 container">
   <div class="profile-left">
     <% if current_user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag @user.photo.key, height: 250, width: 250, crop: :fill, class: "rounded-image" %>
     <% else %>
       <%= image_tag "sample-avatar.jpg", height: 250, width: 250, class: "rounded-image" %>
+      <br>
     <% end %>
 
-    <p class="greeting"><%= @user.name %></p>
+    <p class="greeting"> <%= @user.name %></p>
+      <p> Is a match</p>
+    <div class="match">
+        <% if @matched_teach_skills.count > 0  %>
 
-    <%= link_to "Click to Message", chatroom_path(@matches.last.chatroom) %>
+          <h4>You can teach:</h4>
+            <% @matched_learn_skills.each do |m| %>
+              <%= m.skill.name %>
+            <% end %>
+          <h4>You can learn:</h4>
+            <% @matched_teach_skills.each do |m| %>
+              <%= m.skill.name %>
+            <% end %>
+        <% end  %>
+        <br>
+        <br>
+
+
+    </div>
+    <%= link_to "Click to Message", chatroom_path(@matches.last.chatroom), class: "button-primary pfp"  %>
 
   </div>
 
@@ -54,6 +70,20 @@
           <% end %>
         </ul>
       </div>
+
+      <div class="info-item">
+        <p><strong>Wants to learn:</strong></p>
+        <ul class="learn-skills">
+          <% @user.learn_skills.each do |skill| %>
+            <li>
+              <div class="skill-box2">
+                <p class="skill-name"><strong> <%= skill.skill.name %> </strong></p>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
 
     </div>
   </div>
@@ -101,4 +131,5 @@
     <p><%= @user.availibility %></p>
   </div>
 </div>
+
 -->

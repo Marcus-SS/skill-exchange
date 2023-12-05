@@ -1,5 +1,9 @@
 /* styles.css */
 
+body {
+  font-family: 'Mulish', sans-serif; /* Add Mulish font and fallback to sans-serif */
+}
+
 .profile-container {
   display: flex;
   justify-content: space-between;
@@ -18,7 +22,7 @@
   font-weight: bold;
 }
 
-.button-primary {
+.pfp {
   background-color: #7746EF; /* Change this color to your desired button color */
   color: #fff;
   padding: 8px 16px;
@@ -34,7 +38,7 @@
 }
 
 .profile-right {
-  width: 70%; /* Adjust the width as needed */
+  width: 60%; /* Adjust the width as needed */
 }
 
 .info-box {
@@ -55,8 +59,8 @@
 }
 
 .teach-skills {
+  padding-left: 10px;
   list-style-type: none;
-  padding: 0;
   display: flex;
   flex-wrap: wrap; /* Allow skills to wrap onto the next line if necessary */
 }
@@ -65,14 +69,40 @@
   margin-right: 20px; /* Add some space between skills */
 }
 
+
 .skill-box {
-  outline: 2px solid #000000; /* Add an outline */
   padding: 15px; /* Add padding for better visibility */
   border-radius: 8px; /* Add border-radius for rounded corners */
   margin-bottom: 15px; /* Adjust space between skills */
   height: 130px; /* Set a fixed height for all skill boxes */
-  width: 200px; /* Set a fixed height for all skill boxes */
+  width: 215px; /* Set a fixed height for all skill boxes */
+  outline: 2px solid #7746EF; /* Add an outline */
+  background-color: #d3c1ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+.learn-skills {
+  list-style-type: none;
+  padding-left: 10px;
+  display: flex;
+  flex-wrap: wrap; /* Allow skills to wrap onto the next line if necessary */
+}
+
+
+.learn-skills li {
+  margin-right: 20px; /* Add some space between skills */
+}
+
+.skill-box2 {
+  padding: 15px; /* Add padding for better visibility */
+  border-radius: 8px; /* Add border-radius for rounded corners */
+  margin-bottom: 15px; /* Adjust space between skills */
+  height: 55px; /* Set a fixed height for all skill boxes */
+  width: 215px; /* Set a fixed height for all skill boxes */
+  outline: 2px solid #7746EF; /* Add an outline */
+  background-color: #d3c1ff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -88,4 +118,9 @@
 .skill-mode,
 .skill-level {
   margin-top: 5px;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
 }
