@@ -1,13 +1,11 @@
-<div class="form-container mt-5">
+<div class="form-skills">
 
-<h1> Choose what to teach </h1>
+<h1> Choose what you want to teach </h1>
 <br>
-
 <%= simple_form_for @teach_skill do |f|%>
   <%= f.association :skill %>
   <%= f.input :mode, collection: ["Online", "Offline", "Online/Offline"]%>
   <%= f.input :level, collection: ["Beginner", "Intermediate", "Advanced"]%>
-  <%= f.button :submit %>
+  <%= f.button :submit, class: "button-primary" %>
 <%end%>
-
 </div>
