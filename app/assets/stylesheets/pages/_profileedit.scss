@@ -1,12 +1,12 @@
-.flex-one {
+.flex-one, .flex-two {
   display: flex;
   gap: 15px;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 
 .form-container-profile {
-  width: 60% !important;
+  width: 70% !important;
   margin: 0 auto;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -34,20 +34,14 @@
 }
 
 
-.flex-two {
-  display: flex;
-  gap: 15px;
-  justify-content: space-evenly;
-}
-
 .flex-two input {
   width: 380px;
 }
 
 .bio  {
-  width: 790px;
-  position: relative;
-  left: 15px;
+  // width: 790px;
+  // position: relative;
+  // left: 15px;
 }
 
 .skills-update {
