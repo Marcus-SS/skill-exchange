@@ -22,7 +22,7 @@
             <%= link_to current_user.name.capitalize, profile_show_path, class: "navbar-wagon-link" %>
           </li>
           <li class="nav-item active">
-            <%= link_to "Add Skills", profile_edit_path, class: "navbar-wagon-link special-button" %>
+            <%= link_to "Add Skills", profile_edit_path(anchor: "skills-update"), class: "navbar-wagon-link special-button" %>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

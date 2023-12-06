@@ -16,7 +16,7 @@ class ProfileController < ApplicationController
   def update
     @user = current_user
     @user.update(params_user)
-    redirect_to profile_show_path
+    redirect_to profile_edit_path
   end
 
   def show

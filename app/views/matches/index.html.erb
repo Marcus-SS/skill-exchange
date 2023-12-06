@@ -24,7 +24,7 @@
   <% else %>
       <div class="no-matches">
         <p>You see no matches because you have not added any skills you can teach and skills that you want to learn.</p>
-        <%= link_to "Click here to add skills", profile_edit_path, class: "button-no-matches" %>
+        <%= link_to "Click here to add skills", profile_edit_path(anchor: "skills-update"), class: "button-no-matches" %>
       </div>
   <% end %>
 </div>

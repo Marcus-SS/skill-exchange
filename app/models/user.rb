@@ -36,6 +36,6 @@ class User < ApplicationRecord
     return if photo.attached?
 
     # Attach the default photo (replace 'default_image.jpg' with your actual default image name)
-    photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'SkillExchange.png')), filename: 'SkillExchange.png', content_type: 'image/png')
+    photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'user.png')), filename: 'user.png', content_type: 'image/png')
   end
 end
