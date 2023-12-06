@@ -80,3 +80,5 @@ end
 
 
 gem "cloudinary"
+
+gem "noticed", "~> 1.6"

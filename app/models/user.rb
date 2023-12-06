@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :learn_skills
   has_many :teach_skills
   has_many :messages
+  has_many :notifications, as: :recipient, dependent: :destroy
   has_one_attached :photo
 
   after_create :attach_default_photo
@@ -27,6 +28,10 @@ class User < ApplicationRecord
 
   def chatrooms_with_messages
     chatrooms.joins(:messages).order("messages.created_at DESC").uniq
+  end
+
+  def unread_messages
+    notifications.unread.select { |notification| notification.params[:type] == 'message' }
   end
 
   private
