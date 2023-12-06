@@ -31,7 +31,7 @@ daniel = User.create(
   availibility: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
 )
 ary = ["https://xsgames.co/randomusers/avatar.php?g=male", "https://xsgames.co/randomusers/avatar.php?g=female"]
-  file = URI.open(ary.sample)
+  file = URI.open(ary[0])
   filename = "user#{SecureRandom.urlsafe_base64(5)}.jpg"
   daniel.photo.attach(io: file, filename: filename, content_type: "image/jpg")
 
@@ -47,7 +47,7 @@ bruno = User.create(
   availibility: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
 )
 ary = ["https://xsgames.co/randomusers/avatar.php?g=male", "https://xsgames.co/randomusers/avatar.php?g=female"]
-  file = URI.open(ary.sample)
+  file = URI.open(ary[0])
   filename = "user#{SecureRandom.urlsafe_base64(5)}.jpg"
   bruno.photo.attach(io: file, filename: filename, content_type: "image/jpg")
 
@@ -63,7 +63,7 @@ marcus = User.create(
   availibility: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
 )
 ary = ["https://xsgames.co/randomusers/avatar.php?g=male", "https://xsgames.co/randomusers/avatar.php?g=female"]
-  file = URI.open(ary.sample)
+  file = URI.open(ary[0])
   filename = "user#{SecureRandom.urlsafe_base64(5)}.jpg"
   marcus.photo.attach(io: file, filename: filename, content_type: "image/jpg")
 
@@ -79,7 +79,7 @@ michele = User.create(
   availibility: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
 )
 ary = ["https://xsgames.co/randomusers/avatar.php?g=male", "https://xsgames.co/randomusers/avatar.php?g=female"]
-  file = URI.open(ary.sample)
+  file = URI.open(ary[1])
   filename = "user#{SecureRandom.urlsafe_base64(5)}.jpg"
   michele.photo.attach(io: file, filename: filename, content_type: "image/jpg")
 
@@ -95,9 +95,34 @@ leo = User.create(
   availibility: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
 )
 ary = ["https://xsgames.co/randomusers/avatar.php?g=male", "https://xsgames.co/randomusers/avatar.php?g=female"]
-  file = URI.open(ary.sample)
+  file = URI.open(ary[0])
   filename = "user#{SecureRandom.urlsafe_base64(5)}.jpg"
   leo.photo.attach(io: file, filename: filename, content_type: "image/jpg")
+
+
+
+
+
+
+
+
+
+
+
+  kevin = User.create(
+    email: 'leo@gmail.com',
+    password: 'password123',
+    name: "leo",
+    age: Faker::Number.between(from: 18, to: 60),
+    gender: "Male",
+    city: Faker::Address.city,
+    bio: Faker::Lorem.paragraph,
+    availibility: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
+  )
+  ary = ["https://xsgames.co/randomusers/avatar.php?g=male", "https://xsgames.co/randomusers/avatar.php?g=female"]
+    file = URI.open(ary[0])
+    filename = "user#{SecureRandom.urlsafe_base64(5)}.jpg"
+    leo.photo.attach(io: file, filename: filename, content_type: "image/jpg")
 
 # 3.times do
 #   user = User.new(
@@ -165,24 +190,89 @@ ls_list.each do |ls|
 end
 
 bruno.learn_skills << LearnSkill.create(user: bruno, skill: Skill.find_by(name: "Graphic Design"))
-bruno.teach_skills << TeachSkill.create(user: bruno, skill: Skill.find_by(name: "Coding in Python"))
+bruno.teach_skills << TeachSkill.create(user: bruno, skill: Skill.find_by(name: "Coding in Python"), level: "Advanced", mode: "Online")
+
 
 
 leo.learn_skills << LearnSkill.create(user: leo, skill: Skill.find_by(name: "Problem Solving"))
-leo.teach_skills << TeachSkill.create(user: leo, skill: Skill.find_by(name: "Coding in Python"))
+leo.teach_skills << TeachSkill.create(user: leo, skill: Skill.find_by(name: "Coding in Python"), level: "Intermediate", mode: "Online")
+
 
 
 daniel.learn_skills << LearnSkill.create(user: daniel, skill: Skill.find_by(name: "Creative Writing"))
-daniel.teach_skills << TeachSkill.create(user: daniel, skill: Skill.find_by(name: "Time Management"))
+daniel.teach_skills << TeachSkill.create(user: daniel, skill: Skill.find_by(name: "Time Management"), level: "Advanced", mode: "Online")
+
 
 michele.learn_skills << LearnSkill.create(user: michele, skill: Skill.find_by(name: "Customer Service"))
-michele.teach_skills << TeachSkill.create(user: michele, skill: Skill.find_by(name: "Basketball"))
+michele.teach_skills << TeachSkill.create(user: michele, skill: Skill.find_by(name: "Basketball"), level: "Advanced", mode: "Online")
+
+
+
+bruno.availibility = "Wednesdays from 6:00 to 10:00"
+marcus.availibility = "Weekends from 6:00 to 10:00"
+daniel.availibility = "Thurdays from 7:00 to 9:00"
+leo.availibility = "Wednesdays from 6:00 to 10:00"
+michele.availibility = "Monday-Wednesday from 5:00 to 7:00"
+
 
 marcus.save!
 bruno.save!
 daniel.save!
 michele.save!
 leo.save!
+
+
+
+
+
+
+
+
+
+
+ary = ["https://xsgames.co/randomusers/avatar.php?g=male", "https://xsgames.co/randomusers/avatar.php?g=female"]
+
+# Lists of teach and learn skills
+ls_list = ["Coding in Python", "Time Management", "Basketball", "Public Speaking", "Digital Marketing"]
+  # Add more lists if needed
+
+ts_list = ["Graphic Design", "Creative Writing", "Customer Service", "Problem Solving", "Data Analysis"]
+  # Add more lists if needed
+
+
+ls_list.each_with_index do |ls, index|
+  skill = Skill.find_by(name: ls)
+
+  6.times do
+    user = User.create(
+      email: SecureRandom.hex + '@example.com',
+      password: 'password123',
+      name: Faker::Name.unique.first_name,
+      age: Faker::Number.between(from: 18, to: 60),
+      gender: Faker::Gender.binary_type,
+      city: Faker::Address.city,
+      bio: Faker::Lorem.paragraph,
+      availibility: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
+    )
+
+    gender_avatar = user.gender.downcase == "male" ? ary[0] : ary[1]
+    file = URI.open(gender_avatar)
+    filename = "user#{SecureRandom.urlsafe_base64(5)}.jpg"
+    user.photo.attach(io: file, filename: filename, content_type: "image/jpg")
+
+    # Set teach skill
+    TeachSkill.create!(skill: skill, user: user, level: "Intermediate", mode: "Online")
+    # Set learn skills
+    learn_skill = Skill.find_by(name: ts_list.sample)
+    LearnSkill.create!(user: user, skill: learn_skill)
+
+    # Customize specific details
+    user.availibility = "Wednesdays from 6:00 to 10:00"
+    user.save!
+  end
+end
+
+
 
 
 
@@ -219,7 +309,7 @@ leo.save!
 # end
 
 p 'Updating user bios...'
-users.each do |user|
+User.all do |user|
   # Get two random teach skills and two random learn skills for the bio
   teach_skill_1 = user.teach_skills.first
   teach_skill_2 = user.teach_skills.second
