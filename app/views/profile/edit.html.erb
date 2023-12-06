@@ -1,29 +1,31 @@
 <div class="form-container form-container-profile">
   <div class="profile-basic-info">
-  <%= simple_form_for @user, url: profile_update_path do |f| %>
+  <%= simple_form_for @user, url: profile_update_path,
+    html: { data: { controller: 'edit-form' } } do |f| %>
   <div class="flex-one">
   <div class="float-profile-left">
     <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
-    <%= f.input :photo, as: :file, label: " " %>
+    <%= f.input :photo, as: :file, label: " ",
+      input_html: { data: { action: 'change->edit-form#fieldChanged' } } %>
   </div>
   <div class="float-profile-right">
-    <%= f.input :name %>
-    <%= f.input :gender %>
-    <%= f.input :age %>
+    <%= f.input :name, input_html: { data: { action: 'blur->edit-form#fieldChanged' } } %>
+    <%= f.input :gender, input_html: { data: { action: 'blur->edit-form#fieldChanged' } } %>
+    <%= f.input :age, input_html: { data: { action: 'blur->edit-form#fieldChanged' } } %>
   </div>
   </div>
   <div class="flex-two">
     <div>
-    <%= f.input :city %>
+    <%= f.input :city, input_html: { data: { action: 'blur->edit-form#fieldChanged' } } %>
     </div>
     <div>
-    <%= f.input :availibility %>
+    <%= f.input :availibility, input_html: { data: { action: 'blur->edit-form#fieldChanged' } } %>
     </div>
   </div>
   <div class="bio">
-    <%= f.input :bio %>
+    <%= f.input :bio, input_html: { data: { action: 'blur->edit-form#fieldChanged' } } %>
   </div>
-   <%= f.button :submit, class: "button-primary" %>
+   <%= f.button :submit, class: "button-primary d-none" %>
   <div class="skills-update" id="skills-update">
   <div class="teach">
   <h3>What do you want to teach?</h3>
