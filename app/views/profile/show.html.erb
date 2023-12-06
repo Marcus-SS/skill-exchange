@@ -12,22 +12,23 @@
 <div class="profile-container mt-5 container">
   <div class="profile-left">
     <% if current_user.photo.attached? %>
-        <%= console %>
       <%= cl_image_tag current_user.photo.key, height: 250, width: 250, class: "rounded-image" %>
     <% else %>
       <%= image_tag "sample-avatar.jpg", height: 250, width: 250, class: "rounded-image" %>
     <% end %>
 
-    <p class="greeting">Hello, <%= @user.name %></p>
+    <p class="greeting">Hello <%= @user.name %></p>
     <%= link_to "Edit Profile", profile_edit_path(@current_user), class: "button-primary pfp" %>
-    <%= link_to "Add Skill", profile_edit_path, class: "button-primary pfp" %>
+    <%= link_to "Add Skill", profile_edit_path(anchor: 'skills-update'), class: "button-primary pfp" %>
   </div>
 
   <div class="profile-right">
     <div class="info-box">
       <div class="info-item">
         <p><strong>Bio:</strong><br><%= @user.bio %></p>
-        <p><%= @user.gender %>, <%= @user.age %></p>
+          <% if @user.gender != nil && @user.age != nil%>
+            <p><%= @user.gender %>, <%= @user.age %></p>
+          <%end%>
       </div>
 
       <div class="info-item">

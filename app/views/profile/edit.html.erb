@@ -23,7 +23,8 @@
   <div class="bio">
     <%= f.input :bio %>
   </div>
-  <div class="skills-update">
+   <%= f.button :submit, class: "button-primary" %>
+  <div class="skills-update" id="skills-update">
   <div class="teach">
   <h3>What do you want to teach?</h3>
   <% 5.times do |i| %>
@@ -64,6 +65,5 @@
 </div>
 <br>
 <br>
-    <%= f.button :submit, class: "button-primary" %>
   <% end %>
   </div>

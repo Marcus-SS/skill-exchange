@@ -5,8 +5,14 @@
   <div class="col-9 bg-white">
     <% if @chatrooms.empty? %>
       <div class="unhappy-message">
-        <p>😞 Sorry, You don't have any Matches</p>
-        <%= link_to "Click here to match", matches_path(@current_user), class: "button-secondary" %>
+       <div class="no-matches">
+       <br>
+        <br>
+        <h1> Your chats</h1>
+        <br>
+        <p>You see no matches because you have not added any skills you can teach and skills that you want to learn.</p>
+        <%= link_to "Click here to add skills", profile_edit_path(anchor: "skills-update")    , class: "button-no-matches" %>
+      </div>
       </div>
     <% end %>
   </div>
