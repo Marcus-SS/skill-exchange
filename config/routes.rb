@@ -21,8 +21,14 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
   # resources :profiles
+
+
   get "/profile/edit" => "profile#edit", as: :profile_edit
   patch "/profile" => "profile#update", as: :profile_update
   get "/profile" => "profile#show", as: :profile_show
   get "/profile/:id/show" => "profile#other", as: :profile_other
+
+  # For partial updates
+  # resources :profiles, only: [:index, :update]
+  post "/profile/partial-update", to: "profile#partial_update"
 end

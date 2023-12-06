@@ -1,0 +1,12 @@
+<div class="profile-card" data-controller="edit-profile" data-edit-profile-target="card">
+  <%= image_tag @user.photo.key %>
+
+  <div class="profile-infos" data-edit-profile-target="infos">
+    <h2><%= profile.name %> <small>(<%= profile.year %>)</small></h2>
+    <button aria-label="Edit movie">
+      <i class="fa-solid fa-pen fa-xs ml-2" data-action="click->edit-profile#displayForm"></i>
+    </button>
+  </div>
+
+  <%= simple_form_for movie, html: {class: "d-none", data: {edit_movie_target: "form"}} do |f| %>
+</div>
