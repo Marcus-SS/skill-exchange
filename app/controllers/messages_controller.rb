@@ -14,6 +14,15 @@ class MessagesController < ApplicationController
         sender_id: @message.user.id
       )
       notify_recipient
+      receiver = @message.joined_users.reject{ |user| user == current_user}.first
+      ActionCable.server.broadcast(
+        "notification",
+        {
+          receiver_id: receiver.id,
+          chatroom_id: @chatroom.id,
+          receiver_notification_unread: receiver.notifications.unread.count
+        }.to_json
+      )
       set_message_notifications_as_read
       head :ok
     else

@@ -39,7 +39,7 @@
     </div>
     <% if @matches.last.chatroom.present? %>
       <%= link_to "Click to Message", chatroom_path(@matches.last.chatroom), class: "button-primary pfp"  %>
-    <% else %>
+    <% elsif params[:match_id] %>
       <%= link_to "Click to Message", match_chatrooms_path(params[:match_id]), data: { turbo_method: :post }, class: "button-primary pfp"  %>
     <% end %>
 
@@ -120,7 +120,7 @@
     <br>
     <% if @matches.last.chatroom.present? %>
       <%= link_to "Click to Message", chatroom_path(@matches.last.chatroom), class: "button-primary pfp"  %>
-    <% else %>
+    <% elsif params[:match_id] %>
       <%= link_to "Click to Message", match_chatrooms_path(params[:match_id]), data: { turbo_method: :post }, class: "button-primary pfp"  %>
     <% end %>
 
