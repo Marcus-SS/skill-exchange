@@ -14,16 +14,19 @@ class MessagesController < ApplicationController
         sender_id: @message.user.id
       )
       notify_recipient
+      set_message_notifications_as_read
+
       receiver = @message.joined_users.reject{ |user| user == current_user}.first
       ActionCable.server.broadcast(
         "notification",
         {
           receiver_id: receiver.id,
+          sender_id: current_user.id,
           chatroom_id: @chatroom.id,
-          receiver_notification_unread: receiver.notifications.unread.count
+          receiver_notification_unread: receiver.notifications.unread.count,
+          sender_notification_unread: current_user.notifications.unread.count
         }.to_json
       )
-      set_message_notifications_as_read
       head :ok
     else
       render "chatrooms/show", status: :unprocessable_entity
