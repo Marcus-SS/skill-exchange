@@ -33,20 +33,21 @@
 
 .chatroom-card {
   display: flex;
-  border: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   padding: 10px;
-  margin-bottom: 10px;
-  background-color: #CBC3E3;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-  .chatroom-card h6 {
+  &.active {
+    // background-color: #362B48;
+    background-color: #FDF7FF;
+  }
+
+  h6 {
     color: #333;
-    margin-bottom: 5px;
+    border-bottom: 1px solid #ddd;
     font-weight: 700;
   }
 
-  .chatroom-card p {
+  p {
     color: #666;
     font-size: 14px;
   }

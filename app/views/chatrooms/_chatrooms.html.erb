@@ -1,6 +1,6 @@
 <% chatrooms.each do |chatroom| %>
   <div class="chatroom-container mt-0">
-    <div class="chatroom-card">
+    <div class="chatroom-card <%= 'active' if chatroom.id == params[:id].to_i %>">
       <%= link_to chatroom_path(chatroom) do %>
         <div class="chatroom-details">
           <%= cl_image_tag chatroom.match.other_user(current_user).photo.key, class: "avatar" %>
