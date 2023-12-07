@@ -1,7 +1,7 @@
 class ChatroomsController < ApplicationController
   def index
     # @chatrooms = Chatroom.joins(:messages).where('messages.user': current_user).uniq
-    @chatrooms = current_user.chatrooms_with_messages
+    @chatrooms = current_user.chatrooms
   end
 
   def create
@@ -15,7 +15,7 @@ class ChatroomsController < ApplicationController
   end
 
   def show
-    @chatrooms = current_user.chatrooms_with_messages
+    @chatrooms = current_user.chatrooms
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
   end
