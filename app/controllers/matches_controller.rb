@@ -33,7 +33,7 @@ class MatchesController < ApplicationController
       end
     end
 
-    matches.uniq
+    matches.uniq.compact
   end
 
   def has_matching_skills?(skills1, skills2)
