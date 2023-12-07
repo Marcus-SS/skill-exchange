@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
       ChatroomChannel.broadcast_to(
         @chatroom,
         message: render_to_string(partial: "message", locals: { message: @message }),
-        chatrooms: render_to_string(partial: "chatrooms/chatrooms", locals: { chatrooms: current_user.chatrooms_with_messages }),
+        chatrooms: render_to_string(partial: "chatrooms/chatrooms", locals: { chatrooms: current_user.chatrooms }),
         sender_id: @message.user.id
       )
       notify_recipient

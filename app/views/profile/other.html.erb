@@ -37,7 +37,11 @@
 
 
     </div>
-    <%= link_to "Click to Message", chatroom_path(@matches.last.chatroom), class: "button-primary pfp"  %>
+    <% if @matches.last.chatroom.present? %>
+      <%= link_to "Click to Message", chatroom_path(@matches.last.chatroom), class: "button-primary pfp"  %>
+    <% else %>
+      <%= link_to "Click to Message", match_chatrooms_path(params[:match_id]), data: { turbo_method: :post }, class: "button-primary pfp"  %>
+    <% end %>
 
   </div>
 
@@ -114,8 +118,11 @@
     <% end  %>
     <br>
     <br>
-    <%= link_to "Click to Message", chatroom_path(@matches.last.chatroom) %>
-
+    <% if @matches.last.chatroom.present? %>
+      <%= link_to "Click to Message", chatroom_path(@matches.last.chatroom), class: "button-primary pfp"  %>
+    <% else %>
+      <%= link_to "Click to Message", match_chatrooms_path(params[:match_id]), data: { turbo_method: :post }, class: "button-primary pfp"  %>
+    <% end %>
 
     </div>
     </div>

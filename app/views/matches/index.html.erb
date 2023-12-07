@@ -9,7 +9,7 @@
           <div class="flex-container">
             <% @matches.each do |m| %>
               <% if m.teach_skill_2.skill == ls.skill %>
-                <%= link_to profile_other_path(m.teach_skill_2.user.id), class: "match-new-details" do %>
+                <%= link_to profile_other_path(m.teach_skill_2.user.id, match_id: m), class: "match-new-details" do %>
                   <div class="match-details" style="background-image: url(<%= m.teach_skill_2.user.photo.url %>)">
                     <p class="name-match"><%= m.teach_skill_2.user.name.capitalize %></p>
                     <p>You can teach: <%= m.learn_skill_2.skill.name %></p>

@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   resources :skills
   resources :learn_skills
   resources :teach_skills
-  resources :matches
+  resources :matches do
+    resources :chatrooms, only: [:create]
+  end
   resources :chatrooms, only: [:index, :show] do
     resources :messages, only: :create
   end

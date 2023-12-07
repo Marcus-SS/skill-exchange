@@ -6,6 +6,6 @@ class Chatroom < ApplicationRecord
   validates :match_id, presence: true, uniqueness: true
 
   def last_message_time
-    messages.last.created_at
+    messages.last.created_at unless messages.empty?
   end
 end

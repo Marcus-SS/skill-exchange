@@ -70,10 +70,10 @@ class MatchesController < ApplicationController
     if m.save
       puts "Match created"
       # if Chatroom.find(other_user.id) == false
-      Chatroom.create(match_id: m.id)
+      # Chatroom.create(match_id: m.id) # go to the button 'Click to Message'
       return m
     else
-      puts "Failed to create match"
+      puts "Match existed"
       return Match.find_by(
         teach_skill_1_id: user_teach_skill&.id,
         learn_skill_1_id: user_learn_skill&.id,
