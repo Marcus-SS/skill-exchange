@@ -12,6 +12,7 @@ User.destroy_all
 p 'Creating skills...'
 # Seed skills
 skills_list = ["Basketball", "Coding in Python", "Public Speaking", "Digital Marketing", "Time Management", "Mathematics", "Graphic Design", "Creative Writing", "Customer Service", "Problem Solving", "Data Analysis", "Photography", "Critical Thinking", "Football (Soccer)", "Project Management", "Financial Literacy", "Negotiation", "Foreign Language Proficiency", "Web Development", "Content Creation", "Leadership", "Chess", "Networking", "Public Relations", "SEO Optimization", "Videography", "Research", "C++, Java Programming", "Entrepreneurship", "Event Planning", "Conflict Resolution", "Drawing", "Yoga", "UX/UI Design", "Database Management", "Mobile App Development", "Customer Relationship Management (CRM)", "Business Analysis", "Sales Skills", "Teamwork", "Fitness Training", "Robotics", "Artificial Intelligence", "Email Marketing", "Physics", "Blogging", "Social Media Management", "Guitar Playing", "Emotional Intelligence", "Chemistry", "Editing (Video/Photo)", "Business Development", "Economics", "Cybersecurity", "Basket Weaving", "Creative Problem Solving", "3D Printing", "Public Health Knowledge", "Spanish Language Proficiency", "Virtual Reality (VR) Development", "SEO Copywriting", "Cryptocurrency Trading", "Creative Cooking", "Foreign Policy Analysis", "Meditation", "Desktop Publishing", "Project Planning", "Psychology", "UI/UX Design", "Music Production", "Search Engine Marketing (SEM)", "Conflict Management", "Geographic Information Systems (GIS)", "Graphic Illustration", "Digital Illustration", "Networking Security", "Investment Strategies", "Piano Playing", "Artificial Neural Networks", "Creative Strategy", "Fashion Design", "Strategic Planning", "Risk Management", "Environmental Science", "Mobile Photography", "Interior Design", "Human Resources Management", "Statistical Analysis", "Film Editing", "Computer-Aided Design (CAD)", "Digital Painting", "Machine Learning", "Blockchain Technology", "Product Design", "Culinary Arts", "Cryptography", "Machine Vision", "Cultural Competence", "Augmented Reality (AR) Development", "Statistical Modeling", "Project Leadership", "Video Game Development", "Astrophysics", "Financial Modeling", "Information Security", "Sociology", "Political Science", "Climate Change Adaptation", "Network Administration", "Philosophy", "Behavioral Economics", "Public Policy Analysis", "Creative Marketing", "Game Theory"]
+skills_list = skills_list.sort
 skills = []
 skills_list.each do |skill|
   skills << Skill.create!(name: skill)
@@ -103,6 +104,24 @@ ary = ["https://xsgames.co/randomusers/avatar.php?g=male", "https://xsgames.co/r
 
 
 
+  ankit = User.create(
+    email: 'ankit@gmail.com',
+    password: 'password123',
+    name: "Ankit",
+    age: 34,
+    gender: "Male",
+    city: Faker::Address.city,
+    bio: Faker::Lorem.paragraph,
+    availibility: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
+  )
+  ary = ["https://avatars.githubusercontent.com/u/38615401?v=4", "https://xsgames.co/randomusers/avatar.php?g=female"]
+    file = URI.open(ary[0])
+    filename = "user#{SecureRandom.urlsafe_base64(5)}.jpg"
+    ankit.photo.attach(io: file, filename: filename, content_type: "image/jpg")
+
+
+
+
 
 
 
@@ -171,12 +190,12 @@ p 'Creating teach_skills...'
 p 'Creating matches...'
 
 ls_list = [
-  ["Coding in Python", "Time Management", "Basketball", "Public Speaking", "Digital Marketing"],
+  ["Time Management", "Basketball", "Public Speaking", "Digital Marketing"],
   # Add more lists if needed
 ]
 
 ts_list = [
-  ["Graphic Design", "Creative Writing", "Customer Service", "Problem Solving", "Data Analysis"],
+  ["Graphic Design", "Creative Writing", "Customer Service", "Problem Solving"],
   # Add more lists if needed
 ]
 
@@ -206,9 +225,13 @@ daniel.teach_skills << TeachSkill.create(user: daniel, skill: Skill.find_by(name
 michele.learn_skills << LearnSkill.create(user: michele, skill: Skill.find_by(name: "Customer Service"))
 michele.teach_skills << TeachSkill.create(user: michele, skill: Skill.find_by(name: "Basketball"), level: "Advanced", mode: "Online")
 
+ankit.learn_skills << LearnSkill.create(user: ankit, skill: Skill.find_by(name: "Data Analysis"))
+ankit.teach_skills << TeachSkill.create(user: ankit, skill: Skill.find_by(name: "Coding in Python"), level: "Advanced", mode: "Online")
+
 
 
 bruno.availibility = "Wednesdays from 6:00 to 10:00"
+ankit.availibility = "Tuesdays from 1:00 to 3:00"
 marcus.availibility = "Weekends from 6:00 to 10:00"
 daniel.availibility = "Thurdays from 7:00 to 9:00"
 leo.availibility = "Wednesdays from 6:00 to 10:00"
@@ -221,7 +244,29 @@ daniel.save!
 michele.save!
 leo.save!
 
+# Set teach skill
 
+
+
+2.times do
+  ts = TeachSkill.new(skill: skills.sample, user: ankit, level: "Intermediate", mode: "Online")
+  until ts.save
+    ts.skill = skills.sample
+  end
+end
+# Set learn skills
+learn_skill = Skill.find_by(name: ts_list.sample)
+LearnSkill.create!(user: ankit, skill: learn_skill)
+
+
+2.times do
+  lsk = LearnSkill.new(skill: skills.sample, user: ankit)
+  until lsk.save
+    lsk.skill = skills.sample
+  end
+end
+# Customize specific details
+ankit.save!
 
 
 

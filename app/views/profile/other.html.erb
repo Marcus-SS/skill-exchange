@@ -27,14 +27,16 @@
           <h4>You can teach:</h4>
             <% @matched_learn_skills.each do |skill| %>
                 <p class="skill-name teach-pill"><strong> <%= skill.skill.name %> </strong></p>
+                <br>
             <% end %>
-            <br>
+
           <h4>You can learn:</h4>
             <% @matched_teach_skills.each do |skill| %>
                 <p class="skill-name learn-pill"><strong> <%= skill.skill.name %> </strong></p>
+                <br>
             <% end %>
         <% end  %>
-        <br>
+
 
     </div>
     <% if @matches.last.chatroom.present? %>
