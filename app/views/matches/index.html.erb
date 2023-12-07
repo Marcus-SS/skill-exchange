@@ -5,6 +5,7 @@
     <% current_user.learn_skills.each do |ls| %>
       <% if @matches.any? { |m| m.teach_skill_2.skill == ls.skill } %>
         <div class="metacontainermatches">
+        <hr class="line-above-skill"> <!-- Add this line -->
         <h2 class="skill-title"><%= ls.skill.name %></h2>
           <div class="flex-container">
             <% @matches.each do |m| %>
@@ -12,7 +13,7 @@
                 <%= link_to profile_other_path(m.teach_skill_2.user.id), class: "match-new-details" do %>
                   <div class="match-details" style="background-image: url(<%= m.teach_skill_2.user.photo.url %>)">
                     <p class="name-match"><%= m.teach_skill_2.user.name.capitalize %></p>
-                    <p>You can teach: <%= m.learn_skill_2.skill.name %></p>
+                    <p>You teach: <span class="learn-pill-match"><%= m.learn_skill_2.skill.name %></span></p>
                    </div>
                 <% end %>
               <% end %>

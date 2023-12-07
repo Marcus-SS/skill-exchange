@@ -56,13 +56,13 @@ marcus = User.create(
   email: 'marcus@gmail.com',
   password: '123123',
   name: "Marcus",
-  age: Faker::Number.between(from: 18, to: 60),
+  age: 17,
   gender: "Male",
-  city: Faker::Address.city,
+  city: "Canggu",
   bio: Faker::Lorem.paragraph,
   availibility: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
 )
-ary = ["https://xsgames.co/randomusers/avatar.php?g=male", "https://xsgames.co/randomusers/avatar.php?g=female"]
+ary = ["https://media.discordapp.net/attachments/751624807346470933/1182175247219302421/IMG_20231207_121258_828.jpg?ex=6583bd7e&is=6571487e&hm=44848d0b2f1c70f27a5c85b0cbf78adc693c65b815db8f8a4aa9b4915977b751&=&format=webp&width=662&height=662", "https://xsgames.co/randomusers/avatar.php?g=female"]
   file = URI.open(ary[0])
   filename = "user#{SecureRandom.urlsafe_base64(5)}.jpg"
   marcus.photo.attach(io: file, filename: filename, content_type: "image/jpg")
@@ -87,7 +87,7 @@ ary = ["https://xsgames.co/randomusers/avatar.php?g=male", "https://xsgames.co/r
 leo = User.create(
   email: 'leo@gmail.com',
   password: 'password123',
-  name: "leo",
+  name: "Leo",
   age: Faker::Number.between(from: 18, to: 60),
   gender: "Male",
   city: Faker::Address.city,
@@ -182,7 +182,7 @@ ts_list = [
 
 # Set specific teach skills for the user
 ts_list.each do |ts|
-  marcus.teach_skills = ts.map { |skill_name| TeachSkill.create(user: marcus, skill: Skill.find_by(name: skill_name)) }
+  marcus.teach_skills = ts.map { |skill_name| TeachSkill.create(user: marcus, skill: Skill.find_by(name: skill_name), level: "Advanced", mode: "Online") }
 end
 
 ls_list.each do |ls|
@@ -261,11 +261,25 @@ ls_list.each_with_index do |ls, index|
     user.photo.attach(io: file, filename: filename, content_type: "image/jpg")
 
     # Set teach skill
-    TeachSkill.create!(skill: skill, user: user, level: "Intermediate", mode: "Online")
+    ts = TeachSkill.create!(skill: skill, user: user, level: "Intermediate", mode: "Online")
+
+    2.times do
+      ts = TeachSkill.new(skill: skills.sample, user: user, level: "Intermediate", mode: "Online")
+      until ts.save
+        ts.skill = skills.sample
+      end
+    end
     # Set learn skills
     learn_skill = Skill.find_by(name: ts_list.sample)
     LearnSkill.create!(user: user, skill: learn_skill)
 
+
+    2.times do
+      lsk = LearnSkill.new(skill: skills.sample, user: user)
+      until lsk.save
+        lsk.skill = skills.sample
+      end
+    end
     # Customize specific details
     user.availibility = "Wednesdays from 6:00 to 10:00"
     user.save!
@@ -309,19 +323,31 @@ end
 # end
 
 p 'Updating user bios...'
-User.all do |user|
+User.all.each do |user|
   # Get two random teach skills and two random learn skills for the bio
-  teach_skill_1 = user.teach_skills.first
-  teach_skill_2 = user.teach_skills.second
-  learn_skill_1 = user.learn_skills.first
-  learn_skill_2 = user.learn_skills.second
+  teach_skills = user.teach_skills
+  learn_skills = user.learn_skills
 
-  # Update the user's bio
-  user.bio = "Hi! I'm #{user.name}, a #{teach_skill_1.skill.name} expert based in #{user.city}. " \
-              "I'm looking to learn more about #{learn_skill_1.skill.name} and #{learn_skill_2.skill.name}. " \
-              "I'm also happy to teach you about #{teach_skill_2.skill.name}!"
-  user.save!
+  # Check if the user has at least two teach skills and two learn skills
+  if teach_skills.length >= 2 && learn_skills.length >= 2
+    teach_skill_1 = teach_skills.first
+    teach_skill_2 = teach_skills.second
+    learn_skill_1 = learn_skills.first
+    learn_skill_2 = learn_skills.second
+
+    # Update the user's bio
+    user.bio = "Hi! I'm #{user.name}, a #{teach_skill_1.skill.name} expert based in #{user.city}. " \
+                "I'm looking to learn more about #{learn_skill_1.skill.name} and #{learn_skill_2.skill.name}. " \
+                "I'm also happy to teach you about #{teach_skill_2.skill.name}!"
+    user.save!
+  else
+    # Handle the case where the user doesn't have enough skills
+    user.bio = "Hi! I'm #{user.name}, and I'm excited to exchange skills with you!"
+    user.save!
+  end
 end
+
+
 
 
 # # seeding matches
