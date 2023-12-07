@@ -17,6 +17,7 @@
       <%= image_tag "sample-avatar.jpg", height: 250, width: 250, class: "rounded-image" %>
       <br>
     <% end %>
+   <% @user.name = @user.name.capitalize%>
 
     <p class="greeting"> <%= @user.name %></p>
       <p> Is a match</p>
@@ -24,17 +25,16 @@
         <% if @matched_teach_skills.count > 0  %>
 
           <h4>You can teach:</h4>
-            <% @matched_learn_skills.each do |m| %>
-              <%= m.skill.name %>
+            <% @matched_learn_skills.each do |skill| %>
+                <p class="skill-name teach-pill"><strong> <%= skill.skill.name %> </strong></p>
             <% end %>
+            <br>
           <h4>You can learn:</h4>
-            <% @matched_teach_skills.each do |m| %>
-              <%= m.skill.name %>
+            <% @matched_teach_skills.each do |skill| %>
+                <p class="skill-name learn-pill"><strong> <%= skill.skill.name %> </strong></p>
             <% end %>
         <% end  %>
         <br>
-        <br>
-
 
     </div>
     <% if @matches.last.chatroom.present? %>
@@ -66,7 +66,7 @@
           <% @user.teach_skills.each do |skill| %>
             <li>
               <div class="skill-box">
-                <p class="skill-name"><strong> <%= skill.skill.name %> </strong></p>
+                <p class="skill-name teach-pill"><strong> <%= skill.skill.name %> </strong></p>
                 <p class="skill-mode">Mode: <%= skill.mode %></p>
                 <p class="skill-level">Level: <%= skill.level %></p>
               </div>
@@ -81,7 +81,7 @@
           <% @user.learn_skills.each do |skill| %>
             <li>
               <div class="skill-box2">
-                <p class="skill-name"><strong> <%= skill.skill.name %> </strong></p>
+                <p class="skill-name learn-pill centered-text"><strong> <%= skill.skill.name %> </strong></p>
               </div>
             </li>
           <% end %>

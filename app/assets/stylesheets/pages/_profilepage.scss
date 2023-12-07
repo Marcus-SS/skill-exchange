@@ -99,7 +99,7 @@ body {
   padding: 15px; /* Add padding for better visibility */
   border-radius: 8px; /* Add border-radius for rounded corners */
   margin-bottom: 15px; /* Adjust space between skills */
-  height: 55px; /* Set a fixed height for all skill boxes */
+  height: 65px; /* Set a fixed height for all skill boxes */
   width: 215px; /* Set a fixed height for all skill boxes */
   outline: 2px solid #7746EF; /* Add an outline */
   background-color: #d3c1ff;
@@ -118,4 +118,12 @@ body {
 .skill-mode,
 .skill-level {
   margin-top: 5px;
+}
+
+.centered-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px; /* Adjust the height as needed */
+  margin: 0; /* Remove any default margin */
 }
