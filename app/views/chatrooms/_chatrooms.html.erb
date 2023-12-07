@@ -6,7 +6,8 @@
           <%= cl_image_tag chatroom.match.other_user(current_user).photo.key, class: "avatar" %>
           <h6><%= chatroom.match.other_user(current_user).name.capitalize %></h6>
         </div>
-        <p><%= chatroom.match.teach_skill_1.skill.name %> ↔  <%= chatroom.match.teach_skill_2.skill.name %></p>
+        <br>
+        <p><span class="teach-pill"><%= chatroom.match.teach_skill_1.skill.name %></span> ↔  <span class="learn-pill"><%= chatroom.match.teach_skill_2.skill.name %></span></p>
         <% if chatroom.last_message_time.present? %>
           <p class="last-message">Last message: <%= chatroom.last_message_time.strftime("%d %b %Y %H:%M") %></p>
         <% else %>

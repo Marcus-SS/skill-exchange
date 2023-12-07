@@ -6,7 +6,9 @@
       <% if @matches.any? { |m| m.teach_skill_2.skill == ls.skill } %>
         <div class="metacontainermatches">
         <hr class="line-above-skill"> <!-- Add this line -->
+        <br>
         <h2 class="skill-title"><%= ls.skill.name %></h2>
+        <br>
           <div class="flex-container">
             <% @matches.each do |m| %>
               <% if m.teach_skill_2.skill == ls.skill %>

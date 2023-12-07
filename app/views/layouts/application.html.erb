@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <div data-controller="notification" data-notification-user-id-value="<%= current_user.id %>">
+    <div data-controller="notification" data-notification-user-id-value="<%= current_user.id if user_signed_in? %>">
       <%= render "shared/navbar" unless action_name == 'new' && controller_name == 'sessions' %>
       <%= render "shared/flashes" %>
 
